@@ -1,16 +1,9 @@
 require 'pry'
 require_relative 'produto'
 
-class Ebook
-  
-  include Produto
+class Ebook < Produto
 
-  def initialize(titulo, preco, ano_lancamento, editora)
-    @titulo = titulo
-    @ano_lancamento = ano_lancamento
-    @preco = calcula_preco(preco)
-    @editora = editora
-  end
+  include Impresso
 
   def matches?(query)
     ['ebook', 'digital'].include?(query)

@@ -1,26 +1,20 @@
 require 'pry'
 require_relative 'produto'
-class Livro
+require_relative 'impresso'
 
-  include Produto
+class Livro < Produto
+
+  include Impresso
 
   def initialize(titulo, preco, ano_lancamento, possui_reimpressao, editora, possui_sobrecapa)
-    @titulo = titulo
-    @ano_lancamento = ano_lancamento
+    super(titulo, preco, ano_lancamento, editora)
     @possui_reimpressao = possui_reimpressao
     @possui_sobrecapa = possui_sobrecapa
-    @preco = calcula_preco(preco)
-    @editora = editora
   end
 
   def matches?(query)
     ['livro', 'impresso'].include?(query)
   end
-
-  def possui_reimpressao?
-    @possui_reimpressao
-  end
-
 end
 #Modelo que permite getters e setters para todos os atributos
 
